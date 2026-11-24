@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
   push:
     paths:
-      - 'KasirDurianAndroid-source.zip'
+      - - 'Kasir-DurianAndroid.zip'
       - '.github/workflows/android.yml'
 
 jobs:
@@ -32,7 +32,7 @@ jobs:
 
       - name: Extract Android project
         run: |
-          unzip -o KasirDurianAndroid-source.zip
+          unzip -o Kasir-DurianAndroid.zip
           test -f KasirDurianAndroid/settings.gradle
           test -f KasirDurianAndroid/app/build.gradle
 
