@@ -3,7 +3,7 @@ name: Build Kasir Durian APK
 on:
   workflow_dispatch:
   push:
-    paths:
+   paths:
   - 'Kasir-DurianAndroid.zip'
   - '.github/workflows/android.yml'
 jobs:
