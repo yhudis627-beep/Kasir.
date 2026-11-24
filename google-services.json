@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "246624517044",
+    "project_id": "kasir-durian-online",
+    "storage_bucket": "kasir-durian-online.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:246624517044:android:f641fec2438f57509fd0e1",
+        "android_client_info": {
+          "package_name": "id.tokodurian.kasir"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD-Ha4Z-fncSA9jWFelyOdzt-o96QNjEms"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
