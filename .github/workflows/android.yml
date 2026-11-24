@@ -1,4 +1,4 @@
-exname: Build Kasir Durian APK
+name: Build Kasir Durian APK
 
 on:
   workflow_dispatch:
