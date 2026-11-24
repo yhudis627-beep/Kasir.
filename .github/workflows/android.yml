@@ -1,3 +1,4 @@
+
 name: Build Kasir Durian APK
 
 on:
@@ -6,6 +7,7 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -29,24 +31,30 @@ jobs:
         with:
           gradle-version: '8.9'
 
-      - name: Extract project
+      - name: Extract Firebase project
         run: |
-          ZIP_FILE=$(find . -maxdepth 1 -type f -iname '*.zip' | head -n 1)
-          if [ -z "$ZIP_FILE" ]; then
-            echo "File ZIP tidak ditemukan"
-            ls -la
-            exit 1
-          fi
-          echo "File ditemukan: $ZIP_FILE"
-          unzip -o "$ZIP_FILE"
-          find . -name settings.gradle -o -name settings.gradle.kts
+          ZIP_FILE="KasirDurianFirebase-v2.zip"
+          test -f "$ZIP_FILE"
+          mkdir extracted
+          unzip -q "$ZIP_FILE" -d extracted
+
+          SETTINGS="$(find extracted -type f -name settings.gradle -print -quit)"
+          test -n "$SETTINGS"
+
+          PROJECT_DIR="$(dirname "$SETTINGS")"
+          echo "PROJECT_DIR=$PROJECT_DIR" >> "$GITHUB_ENV"
+
+          test -f "$PROJECT_DIR/app/build.gradle"
+          test -f "$PROJECT_DIR/app/google-services.json"
+
       - name: Build APK
         run: |
-          cd KasirDurianAndroid
+          cd "$PROJECT_DIR"
           gradle assembleDebug
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
           name: Kasir-Durian-APK
-          path: KasirDurianAndroid/app/build/outputs/apk/debug/app-debug.apk
+          path: ${{ env.PROJECT_DIR }}/app/build/outputs/apk/debug/app-debug.apk
+          
