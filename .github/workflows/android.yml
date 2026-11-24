@@ -4,9 +4,8 @@ on:
   workflow_dispatch:
   push:
     paths:
-      - - 'Kasir-DurianAndroid.zip'
-      - '.github/workflows/android.yml'
-
+  - 'Kasir-DurianAndroid.zip'
+  - '.github/workflows/android.yml'
 jobs:
   build:
     runs-on: ubuntu-latest
