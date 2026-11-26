@@ -32,7 +32,7 @@ jobs:
 
       - name: Extract Firebase project
         run: |
-          ZIP_FILE="KasirDurianFirebase-v14.zip"
+          ZIP_FILE="KasirDurianFirebase-v15-FCM.zip"
           test -f "$ZIP_FILE"
           mkdir extracted
           unzip -q "$ZIP_FILE" -d extracted
